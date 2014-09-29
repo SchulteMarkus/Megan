@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+	<property name="severity" value="warning" />
+	<module name="SuppressionFilter">
+		<property name="file" value="${checkstyle.suppressions.file}" />
+	</module>
+	<module name="SuppressionCommentFilter">
+		<property name="offCommentFormat" value="CSOFF\: ([\w\|]+)" />
+		<property name="onCommentFormat" value="CSON\: ([\w\|]+)" />
+		<property name="checkFormat" value="$1" />
+	</module>
+	<module name="NewlineAtEndOfFile">
+		<property name="severity" value="info" />
+	</module>
+	<module name="RegexpSinglelineCheck">
+		<property name="format" value="\s+$" />
+		<property name="message" value="Line has trailing spaces." />
+		<property name="severity" value="info" />
+	</module>
+	<module name="RegexpSingleline">
+		<property name="format" value="printStackTrace" />
+		<property name="message" value="Illegal stack trace printing." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="format" value="System\.(out)|(err)\.print(ln)?\(" />
+		<property name="message" value="Illegal usage of direct print." />
+	</module>
+	<module name="StrictDuplicateCode">
+		<property name="severity" value="error" />
+	</module>
+	<module name="Translation">
+		<property name="severity" value="error" />
+	</module>
+	<module name="FileLength" />
+	<module name="TreeWalker">
+		<property name="tabWidth" value="4" />
+		<module name="AnnotationUseStyle" />
+		<module name="MissingDeprecated" />
+		<module name="MissingOverride" />
+		<module name="PackageAnnotation" />
+		<module name="SuppressWarnings" />
+		<module name="EmptyBlock" />
+		<module name="LeftCurly" />
+		<module name="NeedBraces" />
+		<module name="RightCurly" />
+		<module name="AvoidNestedBlocks" />
+		<module name="VisibilityModifier">
+			<property name="packageAllowed" value="true" />
+			<property name="protectedAllowed" value="true" />
+		</module>
+		<module name="FinalClass" />
+		<module name="InterfaceIsType" />
+		<module name="HideUtilityClassConstructor" />
+		<module name="MutableException" />
+		<module name="ThrowsCount">
+			<property name="max" value="4" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="ArrayTrailingComma" />
+		<module name="CovariantEquals" />
+		<module name="EmptyStatement" />
+		<module name="EqualsAvoidNull" />
+		<module name="EqualsHashCode" />
+		<module name="FinalLocalVariable" />
+		<module name="HiddenField">
+			<property name="ignoreSetter" value="true" />
+			<property name="ignoreConstructorParameter" value="true" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="IllegalInstantiation" />
+		<module name="IllegalTokenText" />
+		<module name="InnerAssignment" />
+		<module name="MagicNumber" />
+		<module name="MissingSwitchDefault" />
+		<module name="ModifiedControlVariable" />
+		<module name="RedundantThrows" />
+		<module name="SimplifyBooleanExpression" />
+		<module name="SimplifyBooleanReturn" />
+		<module name="StringLiteralEquality" />
+		<module name="NestedForDepth" />
+		<module name="NestedIfDepth" />
+		<module name="NestedTryDepth" />
+		<module name="NoFinalizer" />
+		<module name="SuperFinalize" />
+		<module name="IllegalCatch" />
+		<module name="IllegalThrows" />
+		<module name="PackageDeclaration" />
+		<module name="JUnitTestCase" />
+		<module name="ReturnCount">
+			<property name="max" value="3" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="IllegalType" />
+		<module name="DeclarationOrder">
+			<property name="ignoreConstructors" value="true" />
+		</module>
+		<module name="ExplicitInitialization" />
+		<module name="DefaultComesLast" />
+		<module name="FallThrough" />
+		<module name="MultipleStringLiterals">
+			<property name="severity" value="info" />
+			<property name="allowedDuplicates" value="2" />
+			<property name="ignoreStringsRegexp" value="^.{0,4}$" />
+		</module>
+		<module name="MultipleVariableDeclarations" />
+		<module name="UnnecessaryParentheses" />
+		<module name="OneStatementPerLine" />
+		<module name="RequireThis" />
+		<module name="AvoidStarImport" />
+		<module name="AvoidStaticImport" />
+		<module name="IllegalImport" />
+		<module name="RedundantImport" />
+		<module name="UnusedImports" />
+		<module name="JavadocStyle">
+			<property name="severity" value="info" />
+		</module>
+		<module name="BooleanExpressionComplexity" />
+		<module name="ClassDataAbstractionCoupling" />
+		<module name="ClassFanOutComplexity" />
+		<module name="CyclomaticComplexity" />
+		<module name="JavaNCSS" />
+		<module name="TodoComment" />
+		<module name="UncommentedMain" />
+		<module name="UpperEll" />
+		<module name="ArrayTypeStyle" />
+		<module name="Indentation">
+			<property name="severity" value="info" />
+		</module>
+		<module name="TrailingComment" />
+		<module name="OuterTypeFilename" />
+		<module name="ModifierOrder" />
+		<module name="RedundantModifier" />
+		<module name="LocalVariableName" />
+		<module name="TypeName" />
+		<module name="MethodName">
+			<property name="format" value="^[a-z][_a-zA-Z0-9]*$" />
+		</module>
+		<module name="ConstantName" />
+		<module name="MemberName" />
+		<module name="StaticVariableName" />
+		<module name="TypeName" />
+		<module name="PackageName" />
+		<module name="ExecutableStatementCount">
+			<!-- default: 30 -->
+			<property name="max" value="40" />
+		</module>
+		<module name="LineLength">
+			<!-- Configure 120 in your IDE. Eclipse has a threshold, so checkstyle 
+				is +10 -->
+			<property name="max" value="130" />
+			<property name="ignorePattern" value="^[ \t]+@[a-zA-Z.]+\(" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="AnonInnerLength" />
+		<module name="ParameterNumber">
+			<property name="max" value="5" />
+		</module>
+		<module name="OuterTypeNumber" />
+		<module name="MethodCount" />
+		<module name="GenericWhitespace" />
+		<module name="EmptyForInitializerPad" />
+		<module name="EmptyForIteratorPad" />
+		<module name="MethodParamPad" />
+		<module name="NoWhitespaceAfter">
+			<property name="severity" value="info" />
+		</module>
+		<module name="NoWhitespaceBefore" />
+		<module name="OperatorWrap" />
+		<module name="ParenPad" />
+		<module name="TypecastParenPad" />
+		<module name="WhitespaceAfter" />
+		<module name="WhitespaceAround" />
+		<module name="FileContentsHolder" />
+	</module>
+</module>
