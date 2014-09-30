@@ -52,12 +52,6 @@
 		class="org.springframework.data.neo4j.support.mapping.Neo4jMappingContext">
 		<property name="initialEntitySet">
 			<set>
-				<value>com.megan.domain.entities.AuthenticationInformation
-				</value>
-				<value>com.megan.domain.entities.SocialAuthAuthenticationInformation
-				</value>
-				<value>com.megan.domain.entities.StaffMember</value>
-				<value>com.megan.domain.entities.User</value>
 			</set>
 		</property>
 	</bean>
