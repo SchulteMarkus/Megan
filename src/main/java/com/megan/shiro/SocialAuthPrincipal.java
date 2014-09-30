@@ -1,6 +1,7 @@
 package com.megan.shiro;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class SocialAuthPrincipal implements Serializable {
 
@@ -19,6 +20,10 @@ public class SocialAuthPrincipal implements Serializable {
 	public boolean equals(final Object obj) {
 		if (obj instanceof SocialAuthPrincipal) {
 			final SocialAuthPrincipal objT = (SocialAuthPrincipal) obj;
+			if (this.providerId == null && this.validatedId == null && objT.getProviderId() == null
+					&& objT.getValidatedId() == null) {
+				return true;
+			}
 			return (this.providerId == null || this.providerId.equals(objT.getProviderId()))
 					&& this.validatedId != null && this.validatedId.equals(objT.getValidatedId());
 		}
@@ -32,6 +37,11 @@ public class SocialAuthPrincipal implements Serializable {
 
 	public String getValidatedId() {
 		return this.validatedId;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.providerId, this.validatedId);
 	}
 
 	@Override
