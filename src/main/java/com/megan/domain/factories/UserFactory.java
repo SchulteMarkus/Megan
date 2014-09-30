@@ -19,7 +19,7 @@ import org.springframework.data.neo4j.support.Neo4jTemplate;
 import com.megan.domain.entities.SocialAuthAuthenticationInformation;
 import com.megan.domain.entities.User;
 
-@Named("megan-userFactory")
+@Named
 @Stateless
 public class UserFactory {
 
