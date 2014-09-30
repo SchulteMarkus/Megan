@@ -5,9 +5,9 @@ import org.junit.Test;
 
 public class SocialAuthPrincipalTest {
 
-	private static final String providerId = "providerIdValue";
+	private static final String PROVIDER_ID = "providerIdValue";
 
-	private static final String validatedId = "validatedIdValue";
+	private static final String VALIDATED_ID = "validatedIdValue";
 
 	@Test
 	public void equals1() {
@@ -30,8 +30,8 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals4() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.validatedId);
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.VALIDATED_ID);
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertEquals(auth1, auth2);
 		Assert.assertEquals(auth1.hashCode(), auth2.hashCode());
@@ -39,10 +39,10 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals5() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertEquals(auth1, auth2);
 		Assert.assertEquals(auth1.hashCode(), auth2.hashCode());
@@ -50,8 +50,8 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals6() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId, null);
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID, null);
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertNotEquals(auth1, auth2);
 		Assert.assertNotEquals(auth1.hashCode(), auth2.hashCode());
@@ -59,9 +59,9 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals7() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(null, SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertNotEquals(auth1, auth2);
 		Assert.assertNotEquals(auth1.hashCode(), auth2.hashCode());
@@ -69,10 +69,10 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals8() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId + "suffix");
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID + "suffix");
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertNotEquals(auth1, auth2);
 		Assert.assertNotEquals(auth1.hashCode(), auth2.hashCode());
@@ -80,10 +80,10 @@ public class SocialAuthPrincipalTest {
 
 	@Test
 	public void equals9() {
-		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
-		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal("prefix" + SocialAuthPrincipalTest.providerId,
-				SocialAuthPrincipalTest.validatedId);
+		final SocialAuthPrincipal auth1 = new SocialAuthPrincipal(SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
+		final SocialAuthPrincipal auth2 = new SocialAuthPrincipal("prefix" + SocialAuthPrincipalTest.PROVIDER_ID,
+				SocialAuthPrincipalTest.VALIDATED_ID);
 
 		Assert.assertNotEquals(auth1, auth2);
 		Assert.assertNotEquals(auth1.hashCode(), auth2.hashCode());
