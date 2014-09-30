@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 @NodeEntity
 public abstract class AuthenticationInformation {
 
-	protected Date created;
+	private Date created;
 
 	@RelatedTo(type = "authorizes")
 	protected User user;

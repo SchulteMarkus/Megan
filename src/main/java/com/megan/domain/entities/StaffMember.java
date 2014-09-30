@@ -11,11 +11,11 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 public class StaffMember {
 
 	// @NotNull
-	protected Date created;
+	private Date created;
 
 	// @NotNull
 	@RelatedTo(type = "isStaffMember", direction = Direction.INCOMING)
-	protected User user;
+	private User user;
 
 	public DateTime getCreated() {
 		return this.created == null ? null : new DateTime(this.created);

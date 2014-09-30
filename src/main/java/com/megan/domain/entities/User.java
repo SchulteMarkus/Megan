@@ -8,10 +8,10 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 public class User {
 
 	@RelatedTo(type = "authorizes", direction = Direction.INCOMING)
-	protected AuthenticationInformation authInfo;
+	private AuthenticationInformation authInfo;
 
 	@RelatedTo(type = "isStaffMember")
-	protected StaffMember staffMember;
+	private StaffMember staffMember;
 
 	public AuthenticationInformation getAuthInfo() {
 		return this.authInfo;
