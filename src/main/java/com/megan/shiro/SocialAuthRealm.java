@@ -3,7 +3,6 @@ package com.megan.shiro;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -22,8 +21,7 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 	private final String realmName = this.getClass().getSimpleName();
 
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token)
-			throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token) {
 		assert token instanceof SocialAuthAuthenticationToken;
 
 		try {
