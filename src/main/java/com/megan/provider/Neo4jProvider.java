@@ -18,11 +18,11 @@ public class Neo4jProvider {
 
 	private static Neo4jTemplate neoTemplate;
 
+	private ClassPathXmlApplicationContext applicationContext;
+
 	public static Neo4jTemplate getNeoTemplateUgly() {
 		return Neo4jProvider.neoTemplate;
 	}
-
-	private ClassPathXmlApplicationContext applicationContext;
 
 	@Named
 	@Produces
