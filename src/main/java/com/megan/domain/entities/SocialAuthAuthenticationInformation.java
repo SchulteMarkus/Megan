@@ -5,11 +5,11 @@ import org.springframework.data.neo4j.annotation.Indexed;
 public class SocialAuthAuthenticationInformation extends AuthenticationInformation {
 
 	@Indexed
-	private String socialAuthProviderId;
+	protected String socialAuthProviderId;
 
 	@Indexed
 	// @NotNull
-	private String socialAuthValidatedId;
+	protected String socialAuthValidatedId;
 
 	public String getSocialAuthProviderId() {
 		return this.socialAuthProviderId;
@@ -34,8 +34,7 @@ public class SocialAuthAuthenticationInformation extends AuthenticationInformati
 	@Override
 	public String toString() {
 		return "SocialAuthAuthenticationInformation [socialAuthProviderId=" + this.socialAuthProviderId
-				+ ", socialAuthValidatedId=" + this.socialAuthValidatedId + ", userId="
-				+ (this.user == null ? "-no user-" : this.user.getNodeId()) + ", getCreated()=" + this.getCreated()
-				+ ", id=" + this.getNodeId() + "]";
+				+ ", socialAuthValidatedId=" + this.socialAuthValidatedId + ", created=" + this.created + ", userId="
+				+ (this.user == null ? "-no user-" : this.user.getNodeId()) + "]";
 	}
 }
