@@ -29,6 +29,8 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 			final SimplePrincipalCollection principals = new SimplePrincipalCollection(socialAuthPrincipal,
 					this.realmName);
 
+			this.getOrCreateUser(socialAuthPrincipal.getProviderId(), socialAuthPrincipal.getValidatedId());
+
 			return new SimpleAuthenticationInfo(principals, null, this.realmName);
 		} catch (final Exception e) {
 			throw new IncorrectCredentialsException(e);
@@ -53,7 +55,7 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 
 	/**
 	 * Get user with this socialAuth-informations. If the user does not exist, create him before.
-	 * 
+	 *
 	 * @param providerId
 	 * @param validatedId
 	 * @return

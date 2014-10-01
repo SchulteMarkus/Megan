@@ -7,13 +7,17 @@ public class SocialAuthPrincipal implements Serializable {
 
 	private static final long serialVersionUID = 1262557116135574569L;
 
-	private final String providerId;
+	private String providerId;
 
-	private final String validatedId;
+	private String validatedId;
 
 	public SocialAuthPrincipal(final String providerId, final String validatedId) {
-		this.providerId = providerId;
-		this.validatedId = validatedId;
+		if (providerId != null) {
+			this.providerId = providerId.trim().toLowerCase();
+		}
+		if (validatedId != null) {
+			this.validatedId = validatedId.trim().toLowerCase();
+		}
 	}
 
 	@Override
