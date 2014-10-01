@@ -40,7 +40,8 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 		final SocialAuthPrincipal principalCollection = (SocialAuthPrincipal) principals.getPrimaryPrincipal();
 
 		final Set<Permission> permissions = new HashSet<Permission>();
-		final NodeBacked user = this.getUser(principalCollection.getProviderId(), principalCollection.getValidatedId());
+		final NodeBacked user = this.getOrCreateUser(principalCollection.getProviderId(),
+				principalCollection.getValidatedId());
 		if (user != null) {
 			permissions.add(new WildcardPermission("user:*:" + user.getNodeId()));
 		}
@@ -50,5 +51,12 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 		return info;
 	}
 
-	protected abstract NodeBacked getUser(final String providerId, final String validatedId);
+	/**
+	 * Get user with this socialAuth-informations. If the user does not exist, create him before.
+	 * 
+	 * @param providerId
+	 * @param validatedId
+	 * @return
+	 */
+	protected abstract NodeBacked getOrCreateUser(final String providerId, final String validatedId);
 }
