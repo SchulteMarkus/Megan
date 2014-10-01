@@ -20,6 +20,11 @@ public class Neo4jProvider {
 
 	private ClassPathXmlApplicationContext applicationContext;
 
+	/**
+	 * See https://issues.apache.org/jira/browse/SHIRO-337 for why this exists.
+	 *
+	 * @return
+	 */
 	public static Neo4jTemplate getNeoTemplateUgly() {
 		return Neo4jProvider.neoTemplate;
 	}
