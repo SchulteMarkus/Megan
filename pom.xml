@@ -10,6 +10,9 @@
 		<developerConnection>scm:git:https://github.com:SchulteMarkus/Megan.git</developerConnection>
 		<url>https://github.com/SchulteMarkus/Megan</url>
 	</scm>
+	<prerequisites>
+		<maven>3.0.4</maven>
+	</prerequisites>
 	<properties>
 		<spring.datasource.graphDatabaseServiceName>graphDatabaseService-impermanent</spring.datasource.graphDatabaseServiceName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
