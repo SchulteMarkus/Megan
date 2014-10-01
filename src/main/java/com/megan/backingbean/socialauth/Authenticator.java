@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,9 +13,6 @@ import javax.inject.Named;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.web.util.SavedRequest;
-import org.apache.shiro.web.util.WebUtils;
 import org.brickred.socialauth.Profile;
 import org.brickred.socialauth.cdi.SocialAuth;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -28,8 +26,7 @@ import com.megan.shiro.SocialAuthPrincipal;
  * https://code.google.com/p/socialauth/wiki/CDISample
  */
 @SessionScoped
-@Named("socialauthenticator")
-public class Authenticator implements Serializable {
+public abstract class Authenticator implements Serializable {
 
 	private static final long serialVersionUID = -159078463349251273L;
 
@@ -45,6 +42,14 @@ public class Authenticator implements Serializable {
 	public String getOpenID() {
 		return this.openID;
 	}
+
+	/**
+	 * Get URL for just logged in user. URL has to be start with correct contextPath.
+	 *
+	 * @param socialAuthPrincipal
+	 * @return
+	 */
+	abstract protected String getRedirectUrlAfterLogin(SocialAuthPrincipal socialAuthPrincipal);
 
 	public boolean getRememberMe() {
 		return this.rememberMe;
@@ -71,10 +76,7 @@ public class Authenticator implements Serializable {
 		}
 	}
 
-	public String verify() {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login nicht erfolgreich.",
-				"Login nicht erfolgreich.");
-		String redirect = null;
+	public void verify() throws IOException {
 		try {
 			this.socialauth.connect();
 			final Profile socialProfile = this.socialauth.getProfile();
@@ -83,31 +85,25 @@ public class Authenticator implements Serializable {
 
 			final SocialAuthAuthenticationToken token = new SocialAuthAuthenticationToken(socialAuthPrincipal);
 			token.setRememberMe(this.rememberMe);
+
 			SecurityUtils.getSubject().login(token);
 
-			// If there was a previous request, use that url as redirect-destination.
-			final SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(Faces.getRequest());
-			if (savedRequest != null) {
-				try {
-					Faces.redirect(savedRequest.getRequestUrl());
-					return "";
-				} catch (final IOException e) {
-					LoggerFactory.getLogger(Authenticator.class).error("IOException", e);
-				}
-			}
+			Faces.redirect(this.getRedirectUrlAfterLogin(socialAuthPrincipal));
+			return;
 
-			redirect = "/";
-			message = new FacesMessage("Login erfolgreich.");
-
-		} catch (final IncorrectCredentialsException e) {
-			LoggerFactory.getLogger(Authenticator.class).debug(e.toString());
 		} catch (final AuthenticationException e) {
 			LoggerFactory.getLogger(Authenticator.class).warn("AuthenticationException", e);
 		} catch (final Exception e) {
 			LoggerFactory.getLogger(Authenticator.class).error("Exception", e);
 		}
 
+		final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		context.getFlash().setKeepMessages(true);
+
+		final FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login nicht erfolgreich.",
+				"Login nicht erfolgreich.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
-		return redirect;
+
+		context.redirect(context.getRequestContextPath() + "/login.xhtml");
 	}
 }
