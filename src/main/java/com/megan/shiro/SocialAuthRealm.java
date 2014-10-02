@@ -3,6 +3,7 @@ package com.megan.shiro;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -29,7 +30,11 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 			final SimplePrincipalCollection principals = new SimplePrincipalCollection(socialAuthPrincipal,
 					this.realmName);
 
-			this.getOrCreateUser(socialAuthPrincipal.getProviderId(), socialAuthPrincipal.getValidatedId());
+			final NodeBacked user = this.getUser(socialAuthPrincipal.getProviderId(),
+					socialAuthPrincipal.getValidatedId());
+			if (user == null) {
+				throw new AuthenticationException("There is no user for this principal " + socialAuthPrincipal);
+			}
 
 			return new SimpleAuthenticationInfo(principals, null, this.realmName);
 		} catch (final Exception e) {
@@ -42,8 +47,7 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 		final SocialAuthPrincipal principalCollection = (SocialAuthPrincipal) principals.getPrimaryPrincipal();
 
 		final Set<Permission> permissions = new HashSet<Permission>();
-		final NodeBacked user = this.getOrCreateUser(principalCollection.getProviderId(),
-				principalCollection.getValidatedId());
+		final NodeBacked user = this.getUser(principalCollection.getProviderId(), principalCollection.getValidatedId());
 		if (user != null) {
 			permissions.add(new WildcardPermission("user:*:" + user.getNodeId()));
 		}
@@ -60,5 +64,5 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 	 * @param validatedId
 	 * @return
 	 */
-	protected abstract NodeBacked getOrCreateUser(final String providerId, final String validatedId);
+	protected abstract NodeBacked getUser(final String providerId, final String validatedId);
 }

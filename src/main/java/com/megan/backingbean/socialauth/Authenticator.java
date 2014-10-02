@@ -37,7 +37,7 @@ public abstract class Authenticator implements Serializable {
 
 	@Inject
 	@Named("socialauth")
-	private SocialAuth socialauth;
+	protected SocialAuth socialauth;
 
 	public String getOpenID() {
 		return this.openID;
@@ -46,13 +46,20 @@ public abstract class Authenticator implements Serializable {
 	/**
 	 * Get URL for just logged in user. URL has to be start with correct contextPath.
 	 *
-	 * @param socialAuthPrincipal
 	 * @return
 	 */
 	abstract protected String getRedirectUrlAfterLogin(SocialAuthPrincipal socialAuthPrincipal);
 
 	public boolean getRememberMe() {
 		return this.rememberMe;
+	}
+
+	/**
+	 * Point to inject own behaviour - after socilaAuth connect is done successfully, but login is not done yet.
+	 *
+	 * @param socialAuthPrincipal
+	 */
+	protected void postSocialConnectPreLogin(final SocialAuthPrincipal socialAuthPrincipal) {
 	}
 
 	public void setOpenID(final String openID) {
@@ -86,6 +93,7 @@ public abstract class Authenticator implements Serializable {
 			final SocialAuthAuthenticationToken token = new SocialAuthAuthenticationToken(socialAuthPrincipal);
 			token.setRememberMe(this.rememberMe);
 
+			this.postSocialConnectPreLogin(socialAuthPrincipal);
 			SecurityUtils.getSubject().login(token);
 
 			Faces.redirect(this.getRedirectUrlAfterLogin(socialAuthPrincipal));
