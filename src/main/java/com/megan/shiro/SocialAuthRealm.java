@@ -44,10 +44,14 @@ public abstract class SocialAuthRealm extends AuthorizingRealm {
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
-		final SocialAuthPrincipal principalCollection = (SocialAuthPrincipal) principals.getPrimaryPrincipal();
+		final SimplePrincipalCollection principalCollection = (SimplePrincipalCollection) principals
+				.getPrimaryPrincipal();
+		final SocialAuthPrincipal socialAuthPrinciapls = (SocialAuthPrincipal) principalCollection
+				.getPrimaryPrincipal();
 
 		final Set<Permission> permissions = new HashSet<Permission>();
-		final NodeBacked user = this.getUser(principalCollection.getProviderId(), principalCollection.getValidatedId());
+		final NodeBacked user = this.getUser(socialAuthPrinciapls.getProviderId(),
+				socialAuthPrinciapls.getValidatedId());
 		if (user != null) {
 			permissions.add(new WildcardPermission("user:*:" + user.getNodeId()));
 		}

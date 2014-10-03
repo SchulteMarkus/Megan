@@ -39,6 +39,13 @@ public abstract class Authenticator implements Serializable {
 	@Named("socialauth")
 	protected SocialAuth socialauth;
 
+	/**
+	 * Ensure an existing user for this authenticated socialAuth-account.
+	 *
+	 * @param socialAuthPrincipal
+	 */
+	abstract protected void createUserIfNotExisting(final SocialAuthPrincipal socialAuthPrincipal);
+
 	public String getOpenID() {
 		return this.openID;
 	}
@@ -52,14 +59,6 @@ public abstract class Authenticator implements Serializable {
 
 	public boolean getRememberMe() {
 		return this.rememberMe;
-	}
-
-	/**
-	 * Point to inject own behaviour - after socilaAuth connect is done successfully, but login is not done yet.
-	 *
-	 * @param socialAuthPrincipal
-	 */
-	protected void postSocialConnectPreLogin(final SocialAuthPrincipal socialAuthPrincipal) {
 	}
 
 	public void setOpenID(final String openID) {
@@ -93,7 +92,7 @@ public abstract class Authenticator implements Serializable {
 			final SocialAuthAuthenticationToken token = new SocialAuthAuthenticationToken(socialAuthPrincipal);
 			token.setRememberMe(this.rememberMe);
 
-			this.postSocialConnectPreLogin(socialAuthPrincipal);
+			this.createUserIfNotExisting(socialAuthPrincipal);
 			SecurityUtils.getSubject().login(token);
 
 			Faces.redirect(this.getRedirectUrlAfterLogin(socialAuthPrincipal));
