@@ -210,7 +210,7 @@
 						<argument>-u=AnUser</argument>
 						<argument>-p=APassword</argument>
 						<argument>--connect</argument>
-						<argument>--command="deploy\ target/${project.build.finalName}.war\ --force"</argument>
+						<argument>--commands="undeploy\ ${project.build.finalName}.war,\ deploy\ target/${project.build.finalName}.war"</argument>
 					</arguments>
 				</configuration>
 			</plugin>
