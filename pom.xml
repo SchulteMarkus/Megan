@@ -18,6 +18,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<wildfly.home>/path/to/wildfly-8.1.0.Final</wildfly.home>
+		<wildfly.username>AnUser</wildfly.username>
+		<wildfly.password>APassword</wildfly.password>
 		<megan.javax.faces.projectStage>Development</megan.javax.faces.projectStage>
 		<java.version>1.7</java.version>
 		<javaee.version>7.0</javaee.version>
@@ -56,6 +58,7 @@
 		<maven.war.plugin.version>2.4</maven.war.plugin.version>
 		<maven.exec.plugin.version>1.3.2</maven.exec.plugin.version>
 		<maven.jxr.plugin.version>2.4</maven.jxr.plugin.version>
+		<wildfly.maven.plugin.version>1.0.2.Final</wildfly.maven.plugin.version>
 		<junit.version>4.11</junit.version>
 		<selenium.version>2.37.1</selenium.version>
 		<mockito.version>1.9.5</mockito.version>
@@ -142,6 +145,11 @@
 					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${wildlfy.maven.plugin.version}</version>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -199,20 +207,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven.javadoc.plugin.version}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>${maven.exec.plugin.version}</version>
-				<configuration>
-					<executable>${wildfly.home}/bin/jboss-cli.sh</executable>
-					<arguments>
-						<argument>-u=AnUser</argument>
-						<argument>-p=APassword</argument>
-						<argument>--connect</argument>
-						<argument>--commands="undeploy\ ${project.build.finalName}.war,\ deploy\ target/${project.build.finalName}.war"</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
