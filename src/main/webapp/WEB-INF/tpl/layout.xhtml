@@ -1,0 +1,21 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+	xmlns:shiro="http://shiro.apache.org/tags" xmlns:o="http://omnifaces.org/ui">
+	<f:metadata>
+		<o:enableRestorableView />
+		<f:event type="preRenderView" listener="#{springDataNeo4jHelperBean.startReadOnlyTransaction()}" />
+	</f:metadata>
+	<h:head>
+		<title><ui:insert name="title">${texts['product.name']}</ui:insert></title>
+		<meta name="robots" content="all" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" href="#{resource['images:favicon.ico']}" type="image/x-icon" />
+		<link href="#{resource['images:apple-touch-icon.png']}" rel="apple-touch-icon" type="image/x-icon" />
+		<h:outputStylesheet name="default.css" />
+	</h:head>
+	<h:body>
+		<p:outputPanel id="content">
+			<ui:insert name="content" />
+		</p:outputPanel>
+	</h:body>
+</f:view>
