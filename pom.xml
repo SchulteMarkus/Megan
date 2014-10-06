@@ -63,6 +63,9 @@
 		<selenium.version>2.37.1</selenium.version>
 		<mockito.version>1.9.5</mockito.version>
 		<mock-javaMail.version>1.9</mock-javaMail.version>
+
+		<socialauth.google.consumer_key>opensource.brickred.com</socialauth.google.consumer_key>
+		<socialauth.google.consumer_secret>YC06FqhmCLWvtBg/O4W/aJfj</socialauth.google.consumer_secret>
 	</properties>
 	<repositories>
 		<repository>
