@@ -558,7 +558,7 @@
 	</reporting>
 	<issueManagement>
 		<system>GitHub</system>
-		<url>http://redmine.bestellbaer.de:1100/</url>
+		<url>https://github.com/SchulteMarkus/Megan/issues</url>
 	</issueManagement>
 	<ciManagement>
 		<system>Jenkins</system>
