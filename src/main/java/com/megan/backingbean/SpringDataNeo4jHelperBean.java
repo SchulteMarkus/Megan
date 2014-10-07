@@ -23,11 +23,15 @@ public class SpringDataNeo4jHelperBean {
 
 	@PreDestroy
 	public void finishTransaction() {
-		this.tx.success();
-		this.tx.finish();
+		if (this.tx != null) {
+			this.tx.success();
+			this.tx.finish();
+		}
 	}
 
 	public void startReadOnlyTransaction() {
-		this.tx = this.neoTemplate.getGraphDatabaseService().beginTx();
+		if (!this.neoTemplate.getGraphDatabase().transactionIsRunning()) {
+			this.tx = this.neoTemplate.getGraphDatabaseService().beginTx();
+		}
 	}
 }
