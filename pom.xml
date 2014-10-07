@@ -556,4 +556,12 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>http://redmine.bestellbaer.de:1100/</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://80.241.213.241:9100/job/Megan%20trunk-testing/</url>
+	</ciManagement>
 </project>
