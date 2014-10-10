@@ -12,7 +12,6 @@
 			<var>texts</var>
 		</resource-bundle>
 		<resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
-		<resource-handler>org.omnifaces.resourcehandler.CDNResourceHandler</resource-handler>
 	</application>
 	<factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
