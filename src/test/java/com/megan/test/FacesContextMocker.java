@@ -31,8 +31,8 @@ public abstract class FacesContextMocker extends FacesContext {
 		final FacesContext context = Mockito.mock(FacesContext.class, Mockito.RETURNS_DEEP_STUBS);
 		FacesContext.setCurrentInstance(context);
 
-		final Map<String, Object> session = new HashMap<String, Object>();
-		final Map<String, String> requestParameterMap = new HashMap<String, String>();
+		final Map<String, Object> session = new HashMap<>();
+		final Map<String, String> requestParameterMap = new HashMap<>();
 		final ServletRequest request = Mockito.mock(HttpServletRequest.class);
 		Mockito.when(request.getRemoteAddr()).thenReturn("127-testing-1");
 
