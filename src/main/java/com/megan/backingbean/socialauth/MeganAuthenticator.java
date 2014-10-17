@@ -26,7 +26,7 @@ import com.megan.shiro.SocialAuthPrincipal;
  * https://code.google.com/p/socialauth/wiki/CDISample
  */
 @SessionScoped
-public abstract class Authenticator implements Serializable {
+public abstract class MeganAuthenticator implements Serializable {
 
 	private static final long serialVersionUID = -159078463349251273L;
 
@@ -74,10 +74,10 @@ public abstract class Authenticator implements Serializable {
 		this.socialauth.setViewUrl(viewUrl);
 
 		if ("openid".equals(providerName.toLowerCase().trim())) {
-			Logger.getLogger(Authenticator.class).trace("Using OpenId " + this.openID);
+			Logger.getLogger(MeganAuthenticator.class).trace("Using OpenId " + this.openID);
 			this.socialauth.setId(this.openID);
 		} else {
-			Logger.getLogger(Authenticator.class).trace("Using " + providerName);
+			Logger.getLogger(MeganAuthenticator.class).trace("Using " + providerName);
 			this.socialauth.setId(providerName);
 		}
 	}
@@ -99,9 +99,9 @@ public abstract class Authenticator implements Serializable {
 			return;
 
 		} catch (final AuthenticationException e) {
-			LoggerFactory.getLogger(Authenticator.class).warn("AuthenticationException", e);
+			LoggerFactory.getLogger(MeganAuthenticator.class).warn("AuthenticationException", e);
 		} catch (final Exception e) {
-			LoggerFactory.getLogger(Authenticator.class).error("Exception", e);
+			LoggerFactory.getLogger(MeganAuthenticator.class).error("Exception", e);
 		}
 
 		final ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();

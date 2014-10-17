@@ -17,7 +17,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.data.neo4j.aspects.core.NodeBacked;
 
-public abstract class SocialAuthRealm extends AuthorizingRealm {
+public abstract class MeganSocialAuthRealm extends AuthorizingRealm {
 
 	private final String realmName = this.getClass().getSimpleName();
 
