@@ -20,7 +20,7 @@
 		<wildfly.home>/path/to/wildfly-8.1.0.Final</wildfly.home>
 		<wildfly.username>AnUser</wildfly.username>
 		<wildfly.password>APassword</wildfly.password>
-		<megan.javax.faces.projectStage>Development</megan.javax.faces.projectStage>
+		<project.javax.faces.projectStage>Development</project.javax.faces.projectStage>
 		<java.version>1.7</java.version>
 		<javaee.version>7.0</javaee.version>
 		<jsf.version>2.2</jsf.version>
