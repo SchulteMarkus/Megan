@@ -6,10 +6,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.neo4j.graphdb.Transaction;
-import org.springframework.data.neo4j.support.Neo4jTemplate;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.neo4j.core.GraphDatabase;
 
 /**
- * https://stackoverflow.com/questions/26158945/
+ * @see https://stackoverflow.com/questions/26158945/
  */
 @Named
 @RequestScoped
@@ -17,7 +18,7 @@ public class SpringDataNeo4jHelperBean {
 
 	@Inject
 	@Named
-	private Neo4jTemplate neoTemplate;
+	private ClassPathXmlApplicationContext springApplicationContext;
 
 	private Transaction tx;
 
@@ -30,8 +31,9 @@ public class SpringDataNeo4jHelperBean {
 	}
 
 	public void startReadOnlyTransaction() {
-		if (!this.neoTemplate.getGraphDatabase().transactionIsRunning()) {
-			this.tx = this.neoTemplate.getGraphDatabaseService().beginTx();
+		final GraphDatabase gDb = this.springApplicationContext.getBean(GraphDatabase.class);
+		if (!gDb.transactionIsRunning()) {
+			this.tx = gDb.beginTx();
 		}
 	}
 }

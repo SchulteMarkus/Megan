@@ -23,39 +23,41 @@ import com.megan.shiro.SocialAuthAuthenticationToken;
 import com.megan.shiro.SocialAuthPrincipal;
 
 /**
- * https://code.google.com/p/socialauth/wiki/CDISample
+ * Implement a concrete child-class, "@Named("socialauthenticator")".
+ *
+ * @see https://code.google.com/p/socialauth/wiki/CDISample
  */
 @SessionScoped
 public abstract class MeganAuthenticator implements Serializable {
 
 	private static final long serialVersionUID = -159078463349251273L;
 
+	@Inject
+	@Named("socialauth")
+	protected SocialAuth socialauth;
+
 	@NotEmpty
 	private String openID;
 
 	private boolean rememberMe = true;
-
-	@Inject
-	@Named("socialauth")
-	protected SocialAuth socialauth;
 
 	/**
 	 * Ensure an existing user for this authenticated socialAuth-account.
 	 *
 	 * @param socialAuthPrincipal
 	 */
-	abstract protected void createUserIfNotExisting(final SocialAuthPrincipal socialAuthPrincipal);
-
-	public String getOpenID() {
-		return this.openID;
-	}
+	protected abstract void createUserIfNotExisting(final SocialAuthPrincipal socialAuthPrincipal);
 
 	/**
 	 * Get URL for just logged in user. URL has to be start with correct contextPath.
 	 *
 	 * @return
 	 */
-	abstract protected String getRedirectUrlAfterLogin(SocialAuthPrincipal socialAuthPrincipal);
+	protected abstract String getRedirectUrlAfterLogin(SocialAuthPrincipal socialAuthPrincipal);
+
+	public String getOpenID() {
+		return this.openID;
+	}
 
 	public boolean getRememberMe() {
 		return this.rememberMe;

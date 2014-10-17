@@ -9,7 +9,7 @@ public class SocialAuthAuthenticationToken implements AuthenticationToken, Remem
 
 	private final SocialAuthPrincipal principal;
 
-	private boolean rememberMe = false;
+	private boolean rememberMe;
 
 	public SocialAuthAuthenticationToken(final SocialAuthPrincipal principal) {
 		this.principal = principal;
