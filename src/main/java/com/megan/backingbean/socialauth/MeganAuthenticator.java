@@ -48,6 +48,10 @@ public abstract class MeganAuthenticator implements Serializable {
 	 */
 	protected abstract void createUserIfNotExisting(final SocialAuthPrincipal socialAuthPrincipal);
 
+	protected String getLoginUrl() {
+		return "/login.xhtml";
+	}
+
 	/**
 	 * Get URL for just logged in user. URL has to be start with correct contextPath.
 	 *
@@ -113,6 +117,6 @@ public abstract class MeganAuthenticator implements Serializable {
 				"Login nicht erfolgreich.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 
-		context.redirect(context.getRequestContextPath() + "/login.xhtml");
+		context.redirect(context.getRequestContextPath() + this.getLoginUrl());
 	}
 }
