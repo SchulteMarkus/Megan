@@ -18,9 +18,8 @@ import org.springframework.data.neo4j.support.typesafety.TypeSafetyPolicy;
 
 public abstract class MeganNeo4jConfiguration extends Neo4jConfiguration {
 
-	@Override
 	@Bean
-	public GraphDatabaseService getGraphDatabaseService() {
+	public GraphDatabaseService graphDatabaseService() {
 		return super.getGraphDatabaseService();
 	}
 
