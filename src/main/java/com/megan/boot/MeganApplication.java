@@ -48,7 +48,10 @@ public abstract class MeganApplication {
 	public void shutdown() {
 		if (this.springApplicationContext != null) {
 			this.springApplicationContext.close();
+			this.springApplicationContext = null;
 		}
+
+		MeganApplication.graphRepositoryFactory = null;
 
 		Logger.getLogger(MeganApplication.class).info("Server shutdown executed.");
 	}

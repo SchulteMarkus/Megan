@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.Subject;
@@ -26,7 +25,9 @@ import org.slf4j.LoggerFactory;
 
 import com.megan.boot.MeganApplication;
 import com.megan.shiro.MeganSocialAuthRealm;
+import com.megan.shiro.SocialAuthAuthenticationToken;
 import com.megan.shiro.SocialAuthCredentialsMatcher;
+import com.megan.shiro.SocialAuthPrincipal;
 
 /**
  * @see https://shiro.apache.org/testing.html
@@ -69,9 +70,9 @@ public abstract class MeganFacesContextTest<T extends MeganApplication> extends 
 
 	protected abstract MeganSocialAuthRealm getSocialAuthRealm();
 
-	public void login(final String principal, final String password) {
+	protected void login(final SocialAuthPrincipal principal) {
 		final Subject subject = SecurityUtils.getSubject();
-		final UsernamePasswordToken token = new UsernamePasswordToken(principal, password);
+		final SocialAuthAuthenticationToken token = new SocialAuthAuthenticationToken(principal);
 
 		subject.login(token);
 		Assert.assertTrue(subject.isAuthenticated());
@@ -103,6 +104,7 @@ public abstract class MeganFacesContextTest<T extends MeganApplication> extends 
 	public void setupSecurityManager() {
 		final MeganSocialAuthRealm socialAuthRealm = this.getSocialAuthRealm();
 		socialAuthRealm.setCredentialsMatcher(new SocialAuthCredentialsMatcher());
+		socialAuthRealm.setAuthenticationTokenClass(SocialAuthAuthenticationToken.class);
 
 		final Collection<Realm> realms = new HashSet<>();
 		realms.add(socialAuthRealm);
