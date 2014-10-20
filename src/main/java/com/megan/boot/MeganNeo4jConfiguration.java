@@ -13,11 +13,14 @@ import org.springframework.data.neo4j.aspects.support.relationship.Neo4jRelation
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
 import org.springframework.data.neo4j.support.GraphDatabaseServiceFactoryBean;
 import org.springframework.data.neo4j.support.node.NodeEntityStateFactory;
+import org.springframework.data.neo4j.support.typesafety.TypeSafetyOption;
+import org.springframework.data.neo4j.support.typesafety.TypeSafetyPolicy;
 
 public abstract class MeganNeo4jConfiguration extends Neo4jConfiguration {
 
+	@Override
 	@Bean
-	public GraphDatabaseService graphDatabaseService() {
+	public GraphDatabaseService getGraphDatabaseService() {
 		return super.getGraphDatabaseService();
 	}
 
@@ -73,5 +76,11 @@ public abstract class MeganNeo4jConfiguration extends Neo4jConfiguration {
 		aspect.setRelationshipEntityStateFactory(this.relationshipEntityStateFactory());
 
 		return aspect;
+	}
+
+	@Override
+	@Bean
+	public TypeSafetyPolicy typeSafetyPolicy() throws Exception {
+		return new TypeSafetyPolicy(TypeSafetyOption.RETURNS_NULL);
 	}
 }
