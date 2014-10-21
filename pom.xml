@@ -45,6 +45,7 @@
 		<prettytime.version>3.2.5.Final</prettytime.version>
 		<primefaces.version>5.0.10-UR</primefaces.version>
 		<primefaces.theme.version>1.0.10</primefaces.theme.version>
+		<atmosphere.version>2.1.9</atmosphere.version>
 		<omnifaces.version>1.8.1</omnifaces.version>
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 		<maven.surefire.plugin.version>2.17</maven.surefire.plugin.version>
@@ -389,6 +390,11 @@
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
 			<version>${primefaces.theme.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.atmosphere</groupId>
+			<artifactId>atmosphere-runtime</artifactId>
+			<version>${atmosphere.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>
