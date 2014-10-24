@@ -17,6 +17,7 @@
 		<spring.datasource.graphDatabaseServiceName>graphDatabaseService-impermanent</spring.datasource.graphDatabaseServiceName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<war.warName>megan</war.warName>
 		<wildfly.home>/path/to/wildfly-8.1.0.Final</wildfly.home>
 		<wildfly.username>AnUser</wildfly.username>
 		<wildfly.password>APassword</wildfly.password>
