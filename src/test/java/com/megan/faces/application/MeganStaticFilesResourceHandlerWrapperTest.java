@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.megan.faces.application.MeganStaticFilesResourceHandlerWrapper;
-
 public class MeganStaticFilesResourceHandlerWrapperTest {
 
 	private MeganStaticFilesResourceHandlerWrapper resourceHandlerWrapper;
