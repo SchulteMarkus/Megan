@@ -43,7 +43,7 @@
 		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
 		<joda-time.version>2.5</joda-time.version>
 		<prettytime.version>3.2.5.Final</prettytime.version>
-		<primefaces.version>5.0.10-UR</primefaces.version>
+		<primefaces.version>5.1.1-UR</primefaces.version>
 		<primefaces.theme.version>1.0.10</primefaces.theme.version>
 		<atmosphere.version>2.1.9</atmosphere.version>
 		<omnifaces.version>1.8.1</omnifaces.version>
@@ -61,7 +61,7 @@
 		<maven.jxr.plugin.version>2.4</maven.jxr.plugin.version>
 		<wildfly.maven.plugin.version>1.0.2.Final</wildfly.maven.plugin.version>
 		<junit.version>4.11</junit.version>
-		<selenium.version>2.43.1</selenium.version>
+		<selenium.version>2.44.0</selenium.version>
 		<mockito.version>1.10.8</mockito.version>
 		<mock-javaMail.version>1.9</mock-javaMail.version>
 
