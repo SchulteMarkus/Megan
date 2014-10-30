@@ -1,8 +1,8 @@
 package com.megan.helper;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,8 +23,16 @@ public final class ListHelper {
 		return ListHelper.toList(result.iterator());
 	}
 
+	public static <T> List<T> toList(final Set<T> set) {
+		return ListHelper.toList(set.iterator());
+	}
+
+	public static <T> Set<T> toSet(final Iterable<T> iter) {
+		return ListHelper.toSet(iter.iterator());
+	}
+
 	public static <T> Set<T> toSet(final Iterator<T> iter) {
-		final Set<T> set = new HashSet<>();
+		final Set<T> set = new LinkedHashSet<>();
 		while (iter.hasNext()) {
 			set.add(iter.next());
 		}
