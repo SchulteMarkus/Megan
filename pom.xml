@@ -27,26 +27,26 @@
 		<java.servlet.api.version>3.1.0</java.servlet.api.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<logback.version>1.1.2</logback.version>
-		<neo4j.version>2.1.5</neo4j.version>
+		<neo4j.version>2.1.6</neo4j.version>
 		<neo4j.graph.collections.version>0.7.1-neo4j-2.0.1</neo4j.graph.collections.version>
 		<neo4j.spatial.version>0.13-neo4j-2.1.2</neo4j.spatial.version>
 		<spring.version>4.0.7.RELEASE</spring.version>
 		<shiro.version>1.2.3</shiro.version>
 		<shiro-faces.version>2.0-SNAPSHOT</shiro-faces.version>
-		<brickred.socialauth.version>4.6</brickred.socialauth.version>
+		<brickred.socialauth.version>4.7</brickred.socialauth.version>
 		<brickred.socialauth-cdi.version>2.1</brickred.socialauth-cdi.version>
-		<mysema.querydsl.version>3.5.0</mysema.querydsl.version>
-		<spring.data.neo4j.version>3.2.0.RELEASE</spring.data.neo4j.version>
+		<mysema.querydsl.version>3.6.0</mysema.querydsl.version>
+		<spring.data.neo4j.version>3.2.1.RELEASE</spring.data.neo4j.version>
 		<tinkerpop.gremlin.version>2.5.0</tinkerpop.gremlin.version>
 		<aspectj.version>1.8.2</aspectj.version>
 		<aspectj.maven.plugin.version>1.7</aspectj.maven.plugin.version>
 		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
-		<joda-time.version>2.5</joda-time.version>
+		<joda-time.version>2.6</joda-time.version>
 		<prettytime.version>3.2.5.Final</prettytime.version>
-		<primefaces.version>5.0.11-UR</primefaces.version>
+		<primefaces.version>5.1.3-UR</primefaces.version>
 		<primefaces.theme.version>1.0.10</primefaces.theme.version>
 		<atmosphere.version>2.1.9</atmosphere.version>
-		<omnifaces.version>1.8.1</omnifaces.version>
+		<omnifaces.version>2.0</omnifaces.version>
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 		<maven.surefire.plugin.version>2.17</maven.surefire.plugin.version>
 		<maven.failsafe.plugin.version>2.17</maven.failsafe.plugin.version>
@@ -61,7 +61,7 @@
 		<maven.jxr.plugin.version>2.4</maven.jxr.plugin.version>
 		<maven.git-commit-id.plugin.version>2.1.11</maven.git-commit-id.plugin.version>
 		<wildfly.maven.plugin.version>1.0.2.Final</wildfly.maven.plugin.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.12</junit.version>
 		<selenium.version>2.44.0</selenium.version>
 		<mockito.version>1.10.8</mockito.version>
 		<mock-javaMail.version>1.9</mock-javaMail.version>

@@ -7,7 +7,7 @@ import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
 import javax.faces.application.ResourceWrapper;
 
-import org.primefaces.application.PrimeResourceHandler;
+import org.primefaces.application.resource.PrimeResourceHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
